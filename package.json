@@ -2,9 +2,10 @@
   "name": "aloka-space-web",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "functions/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "netlify-lambda build app"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "netlify-lambda": "^2.0.15"
   }
 }

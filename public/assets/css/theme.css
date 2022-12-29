@@ -1142,6 +1142,7 @@ a.text-dark:focus {
 .navbar-float {
   position: absolute;
   left: 0;
+  top: 0px;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(100, 95, 136, 0.15);

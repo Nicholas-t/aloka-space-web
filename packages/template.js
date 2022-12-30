@@ -4,6 +4,48 @@ const templateExport = {}
 const TEMPLATEDIR = __dirname + "/../public/frame/"
 const allFile = fs.readdirSync(TEMPLATEDIR)
 
+Date.prototype.toW3CString = function () {
+    var year = this.getFullYear();
+    var month = this.getMonth();
+    month++;
+    if (month < 10) {
+        month = '0' + month;
+    }
+    var day = this.getDate();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    var hours = this.getHours();
+    if (hours < 10) {
+        hours = '0' + hours;
+    }
+    var minutes = this.getMinutes();
+    if (minutes < 10) {
+        minutes = '0' + minutes;
+    }
+    var seconds = this.getSeconds();
+    if (seconds < 10) {
+        seconds = '0' + seconds;
+    }
+    var offset = -this.getTimezoneOffset();
+    var offsetHours = Math.abs(Math.floor(offset / 60));
+    var offsetMinutes = Math.abs(offset) - offsetHours * 60;
+    if (offsetHours < 10) {
+        offsetHours = '0' + offsetHours;
+    }
+    if (offsetMinutes < 10) {
+        offsetMinutes = '0' + offsetMinutes;
+    }
+    var offsetSign = '+';
+    if (offset < 0) {
+        offsetSign = '-';
+    }
+    return year + '-' + month + '-' + day +
+        'T' + hours + ':' + minutes + ':' + seconds +
+        offsetSign + offsetHours + ':' + offsetMinutes;
+}
+
+
 for (let i = 0; i < allFile.length; i++) {
     if (allFile[i].includes(".html")) {
         templateExport[allFile[i].split(".")[0]] = fs.readFileSync(TEMPLATEDIR + allFile[i]).toString()
@@ -81,12 +123,18 @@ let _sitemapXml = ""
 const existingPages = [
     "/", "/contact"
 ]
+
+let curDate = new Date()
+
+let strDate = curDate.toW3CString().split("T")[0]
+
 for (let i = 0; i < pageSitemap.length; i++) {
     parentListPagesHtml += `<a href="/${pageSitemap[i].slug}" class="tag-cloud-link">${pageSitemap[i].main}</a>`
     childListPages[pageSitemap[i].slug] = ""
     _sitemapXml += `    
     <url>
         <loc>https://alokaspace.com/${pageSitemap[i].slug}</loc>
+        <lastmod>${strDate}</lastmod>
         <priority>0.9</priority>
     </url>`
     for (let j = 0; j < pageSitemap[i].childPage.length; j++) {
@@ -94,19 +142,22 @@ for (let i = 0; i < pageSitemap.length; i++) {
         _sitemapXml += `    
         <url>
             <loc>https://alokaspace.com/${pageSitemap[i].slug}/${pageSitemap[i].childPage[j].slug}</loc>
+            <lastmod>${strDate}</lastmod>
             <priority>0.9</priority>
         </url>`
     }
 }
 
-let sitemap = `
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
     <loc>https://alokaspace.com/</loc>
+    <lastmod>${strDate}</lastmod>
     <priority>0.9</priority>
 </url>
 <url>
     <loc>https://alokaspace.com/contact</loc>
+    <lastmod>${strDate}</lastmod>
     <priority>0.9</priority>
 </url>
 ${_sitemapXml}

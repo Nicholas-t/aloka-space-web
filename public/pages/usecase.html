@@ -5,13 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ALOKA Space - Automation Agency</title>
-  <meta name="description"
-    content="Looking for an automation agency to help you get your website up and running? Look no further than our team of experts! We can help you design, implement, and manage all of your automation needs. Contact us today to learn more about our services!">
+  <title><%-metaTitle%></title>
+  <meta name="description" content="<%-metaDescription%>">
 
-  <meta property="og:title" content="ALOKA Space - Automation Agency" />
+  <meta property="og:title" content="<%-metaTitle%>" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://alokaspace.com/" />
+  <meta property="og:url" content="https://alokaspace.com<%-path%>" />
 
   <link rel="icon" type="image/x-icon" href="/static/assets/img/logo-small.png">
 
@@ -22,6 +21,7 @@
   <link rel="stylesheet" href="/static/assets/css/theme.css">
 
 </head>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMC10EDBJZ"></script>
 <script>
@@ -42,11 +42,15 @@
       <div class="container h-100">
         <div class="row align-items-center h-100">
           <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1 class="mb-4">Let's talk automation</h1>
-            <p class="text-lg mb-5">We build personalized digital process automation that can scale to your needs.
+            <h1 class="mb-4"><%-heroTitle%></h1>
+            <small><i><%-breadCrumb%></i></small>
+            <br>
+            <br>
+            <p class="text-lg mb-5">
+              <%-heroSubTitle%>
             </p>
 
-            <a href="/#how-it-works" class="btn btn-outline border text-secondary">More Info</a>
+            <a href="<%-path%>#how-it-works" class="btn btn-outline border text-secondary">More Info</a>
             <a target="__blank" href="https://tidycal.com/3qgv0l1/30-minute-consultation-with-aloka-space"
               class="btn btn-primary btn-split ml-2">Book a call <div class="fab"><span class="mai-chatbox"></span>
               </div>
@@ -71,7 +75,7 @@
             </div>
             <br>
             <div class="row justify-content-center wow fadeInUp">
-              <h6>We can optimize and help you scale your digital process in <strong>3 easy steps</strong></h6>
+              <h6>We can optimize and help your <%-main%> at scale in <strong>3 easy steps</strong></h6>
             </div>
             <br>
 
@@ -134,7 +138,7 @@
               </div>
               <div class="col-lg-6 py-3 wow fadeInRight">
                 <h2 class="title-section">
-                  Looking for a <span class="marked">reliable</span> automation stack?</h2>
+                  Looking for a <span class="marked">reliable</span> <%-main%> automation stack?</h2>
                 <div class="divider"></div>
                 <p>Look no further than ALOKA Space Automation Agency!
 
@@ -149,6 +153,7 @@
         </div> <!-- .page-section -->
 
 
+
         <div class="page-section">
           <div class="container">
             <div class="row">
@@ -158,7 +163,7 @@
                 <p class="mb-5">hen we face challenges, we are pushed out of our comfort zone and are forced to learn
                   new
                   skills and adapt to new situations. This helps us to grow and develop new creative solution</p>
-                <a href="/#how-it-works" class="btn btn-primary">More Details</a>
+                <a href="<%-path%>#how-it-works" class="btn btn-primary">More Details</a>
               </div>
               <div class="col-lg-4 py-3 wow zoomIn">
                 <div class="widget">
@@ -167,7 +172,7 @@
                     <h4 class="widget-title">Our Usecases</h4>
                     <div class="divider"></div>
                     <div class="tag-clouds">
-                      <%- parentListPagesHtml %>
+                      <%- childListPagesHtml %>
 
                     </div>
                   </div>
@@ -189,16 +194,14 @@
           </div> <!-- .container -->
         </div> <!-- .page-section -->
 
-
         <%-ourFounders%>
 
           <div id="usecase" class="page-section border-top">
             <div class="container">
               <div class="text-center wow fadeInUp">
                 <div class="subhead">Our usecases</div>
-                <h2 class="title-section">Read a few of our usecases to see how else we can <span
-                    class="marked">help</span>
-                  your <span class="marked">business</span>
+                <h2 class="title-section">Read a few usecase on how we can <span class="marked">help</span> your <span
+                    class="marked">business</span>
                 </h2>
                 <div class="divider mx-auto"></div>
               </div>

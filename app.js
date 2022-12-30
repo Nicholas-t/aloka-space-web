@@ -2,7 +2,7 @@ var express = require('express')
 var bodyparser = require('body-parser');
 
 const template = require('./packages/template');
-const { tools, usecase } = require('./packages/variables');
+const { pageSitemap } = require('./packages/variables');
 
 var app = express()
 
@@ -12,78 +12,11 @@ app.use(express.urlencoded({ extended: false }))
 app.engine('html', require('ejs').renderFile);
 app.use('/static', express.static(__dirname + '/public'));
 
-
-app.get('/', async function (req, res) {
-    let toolHtml = "";
-    for (let i = 0; i < Object.keys(tools).length; i++) {
-        let toolType = Object.keys(tools)[i]
-        toolHtml += `
-        <div class="text-center wow fadeInUp">
-            <small class="subhead">${toolType}</small>
-        </div>`
-        let thisToolHtml = ""
-        for (let j = 0; j < tools[toolType].length; j++) {
-            thisToolHtml += `
-            <div class="col-lg-4 py-3 wow fadeInUp">
-                <div class="display-3" style="height:90%;">
-                    <div class="img-place text-center">
-                        <img  style="width:50%;" src="${tools[toolType][j].image}" alt="">
-                    </div>
-                </div>
-                <h5>${tools[toolType][j].label}</h5>
-            </div>`
-        }
-        toolHtml += `
-        <div class="row mt-5 text-center">
-            ${thisToolHtml}
-        </div>
-        `
-    }
-
-
-    let usecaseHtml = `
-        <div class="col-md-6 col-lg-3 py-3 wow fadeInUp">
-            <div class="card-blog">
-            <div class="header">
-                <div class="entry-footer">
-                <div class="post-author">Have a usecase in mind ?</div>
-                </div>
-            </div>
-            <div class="body">
-                <div class="post-title"><a>We would love to hear from you!</a></div>
-            </div>
-            <div class="footer">
-                <a href="/contact">Contact Us <span class="mai-chevron-forward text-sm"></span></a>
-            </div>
-            </div>
-        </div>`
-    for (let i = 0; i < usecase.length; i++) {
-        usecaseHtml += `
-        <div class="col-md-6 col-lg-3 py-3 wow fadeInUp">
-          <div class="card-blog">
-            <div class="header">
-              <div class="entry-footer">
-                <div class="post-author">${usecase[i].name}</div>
-                <i class="post-date">${usecase[i].tools}</i>
-              </div>
-            </div>
-            <div class="body">
-              <div class="post-title"><a>${usecase[i].description}</a></div>
-            </div>
-            <div class="footer">
-              <a href="/contact?inquire=${encodeURIComponent(usecase[i].name)}">Inquire More <span class="mai-chevron-forward text-sm"></span></a>
-            </div>
-          </div>
-        </div>`
-    }
-    res.render(__dirname + `/public/pages/index.html`, { ...template, toolHtml, usecaseHtml })
+app.get('/', function (req, res) {
+    res.render(__dirname + `/public/pages/index.html`, { ...template })
 });
 
-app.get('/about', async function (req, res) {
-    res.render(__dirname + `/public/pages/about.html`, { ...template })
-});
-
-app.get('/contact', async function (req, res) {
+app.get('/contact', function (req, res) {
     let message = ""
     if (req.query.inquire) {
         message = `Hi ALOKA Space, I would like to inquire more about ${req.query.inquire}`
@@ -91,6 +24,63 @@ app.get('/contact', async function (req, res) {
     res.render(__dirname + `/public/pages/contact.html`, { ...template, message })
 });
 
+app.get('/:parent', function (req, res, next) {
+    let pageData = {}
+    for (let i = 0; i < pageSitemap.length; i++) {
+        if (pageSitemap[i].slug == req.params.parent) {
+            pageData.path = `/${req.params.parent}`
+            pageData.main = pageSitemap[i].main
+            pageData.metaTitle = pageSitemap[i].metaTitle
+            pageData.metaDescription = pageSitemap[i].metaDescription
+            pageData.heroTitle = pageSitemap[i].heroTitle
+            pageData.heroSubTitle = pageSitemap[i].heroSubTitle
+        }
+    }
+    if (pageData.main) {
+        const childListPagesHtml = template.childListPages[req.params.parent]
+        const breadCrumb = `<a href="/">Home</a> > <a href="/${req.params.parent}">${pageData.main}</a>`
+        res.render(__dirname + `/public/pages/usecase.html`, { ...template, ...pageData, childListPagesHtml, breadCrumb })
+    } else {
+        next()
+    }
+})
+
+
+app.get('/:parent/:child', function (req, res, next) {
+    let pageData = {}
+    let parentMain = ""
+    for (let i = 0; i < pageSitemap.length; i++) {
+        if (pageSitemap[i].slug == req.params.parent) {
+            parentMain = pageSitemap[i].main
+            for (let j = 0; j < pageSitemap[i].childPage.length; j++) {
+                if (req.params.child == pageSitemap[i].childPage[j].slug) {
+                    pageData.path = `/${req.params.parent}/${req.params.child}`
+                    pageData.main = pageSitemap[i].childPage[j].main
+                    pageData.metaTitle = pageSitemap[i].childPage[j].metaTitle
+                    pageData.metaDescription = pageSitemap[i].childPage[j].metaDescription
+                    pageData.heroTitle = pageSitemap[i].childPage[j].heroTitle
+                    pageData.heroSubTitle = pageSitemap[i].childPage[j].heroSubTitle
+                }
+            }
+        }
+    }
+    if (pageData.main) {
+        const childListPagesHtml = template.childListPages[req.params.parent]
+        const breadCrumb = `<a href="/">Home</a> > <a href="/${req.params.parent}">${parentMain} > <a href="/${req.params.parent}/${req.params.child}">${pageData.main}</a>`
+        res.render(__dirname + `/public/pages/usecase.html`, { ...template, ...pageData, childListPagesHtml, breadCrumb })
+    } else {
+        next()
+    }
+})
+
+app.get('/error', function (req, res) {
+    res.status(404)
+    res.render(__dirname + `/public/pages/error.html`, { ...template })
+});
+
+app.get('/sitemap.xml', function (req, res) {
+    res.sendFile(__dirname + '/public/sitemap.xml');
+});
 
 app.get('*', function (req, res) {
     res.redirect('/error')

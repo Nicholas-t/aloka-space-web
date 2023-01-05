@@ -3,6 +3,7 @@ var bodyparser = require('body-parser');
 
 const template = require('./packages/template');
 const { pageSitemap } = require('./packages/variables');
+const axios = require("axios");
 
 var app = express()
 
@@ -11,6 +12,15 @@ app.use(urlencodedParser)
 app.use(express.urlencoded({ extended: false }))
 app.engine('html', require('ejs').renderFile);
 app.use('/static', express.static(__dirname + '/public'));
+
+app.use('/', function (req, res, next) {
+    if (req.query.campaign_rec_id) {
+        axios.get(`https://n8n.nicholasbudiharsa.xyz/webhook/recently-funded-outreach-visited?record_id=${req.query.campaign_rec_id}`)
+        res.redirect(req.path)
+    } else {
+        next()
+    }
+})
 
 app.get('/', function (req, res) {
     res.render(__dirname + `/public/pages/index.html`, { ...template })
@@ -22,6 +32,15 @@ app.get('/contact', function (req, res) {
         message = `Hi ALOKA Space, I would like to inquire more about ${req.query.inquire}`
     }
     res.render(__dirname + `/public/pages/contact.html`, { ...template, message })
+});
+
+app.get('/logo', function (req, res) {
+    res.sendFile(__dirname + `/public/assets/img/logo.png`)
+});
+
+app.get('/logo/campaign-:record_id', function (req, res) {
+    axios.get(`https://n8n.nicholasbudiharsa.xyz/webhook/recently-funded-outreach-read?record_id=${req.params.record_id}`)
+    res.sendFile(__dirname + `/public/assets/img/logo.png`)
 });
 
 app.get('/:parent', function (req, res, next) {

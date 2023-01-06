@@ -132,32 +132,29 @@ for (let i = 0; i < pageSitemap.length; i++) {
     parentListPagesHtml += `<a href="/${pageSitemap[i].slug}" class="tag-cloud-link">${pageSitemap[i].main}</a>`
     childListPages[pageSitemap[i].slug] = ""
     _sitemapXml += `    
-    <url>
-        <loc>https://alokaspace.com/${pageSitemap[i].slug}</loc>
-        <lastmod>${strDate}</lastmod>
-        <priority>0.9</priority>
-    </url>`
+<url>
+    <loc>https://alokaspace.com/${pageSitemap[i].slug}</loc>
+    <priority>0.9</priority>
+</url>`
     for (let j = 0; j < pageSitemap[i].childPage.length; j++) {
         childListPages[pageSitemap[i].slug] += `<a href="/${pageSitemap[i].slug}/${pageSitemap[i].childPage[j].slug}" class="tag-cloud-link">${pageSitemap[i].childPage[j].main}</a>`
         _sitemapXml += `    
-        <url>
-            <loc>https://alokaspace.com/${pageSitemap[i].slug}/${pageSitemap[i].childPage[j].slug}</loc>
-            <lastmod>${strDate}</lastmod>
-            <priority>0.9</priority>
-        </url>`
+<url>
+    <loc>https://alokaspace.com/${pageSitemap[i].slug}/${pageSitemap[i].childPage[j].slug}</loc>
+    <priority>0.9</priority>
+</url>`
     }
 }
 
-let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+let sitemap = `<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
     <loc>https://alokaspace.com/</loc>
-    <lastmod>${strDate}</lastmod>
     <priority>0.9</priority>
 </url>
 <url>
     <loc>https://alokaspace.com/contact</loc>
-    <lastmod>${strDate}</lastmod>
     <priority>0.9</priority>
 </url>
 ${_sitemapXml}

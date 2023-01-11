@@ -38,10 +38,11 @@ app.get('/logo', function (req, res) {
     res.sendFile(__dirname + `/public/assets/img/logo.png`)
 });
 
-app.get('/logo/campaign-:record_id', function (req, res) {
+app.use('/logo/campaign-:record_id', function (req, res, next) {
     axios.get(`https://n8n.nicholasbudiharsa.xyz/webhook/recently-funded-outreach-read?record_id=${req.params.record_id}`)
-    res.sendFile(__dirname + `/public/assets/img/banner.jpg`)
+    next()
 });
+app.use('/logo/campaign-:record_id', express.static(__dirname + '/public/assets/img'));
 
 app.get('/:parent', function (req, res, next) {
     let pageData = {}

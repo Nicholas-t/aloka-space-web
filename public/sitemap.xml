@@ -1,239 +1,193 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
     <loc>https://alokaspace.com/</loc>
-    <lastmod>2023-01-05</lastmod>
     <priority>0.9</priority>
 </url>
 <url>
     <loc>https://alokaspace.com/contact</loc>
-    <lastmod>2023-01-05</lastmod>
     <priority>0.9</priority>
 </url>
     
-    <url>
-        <loc>https://alokaspace.com/human-resource</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/human-resource/freelance-management</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/human-resource/payroll-administration</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/accounting</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/accounting/invoice-generation</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/crm</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/crm/affiliate-marketing</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/crm/after-sales-activity</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/communication</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/communication/online-advertising</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/e-commerce</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/e-commerce/apparel-e-commerce</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/e-commerce/tech-e-commerce</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/e-commerce/merchandise-design</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/e-commerce/online-store</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/e-commerce/purchase-order</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/email-campaign</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/email-campaign/cold-marketing</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/email-campaign/in-bound-campaign</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/email-campaign/out-bound-campaign</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/administration</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/administration/finance</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/lead-generation</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/lead-generation/b2b-leads-generation</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/lead-generation/b2c-leads-generation</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/lead-generation/omnichannel-marketing</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/content-generation</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/content-generation/keyword-management</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/content-generation/digital-content-marketing</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/content-generation/copywriting</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/seo</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/seo/content-generation</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/project-management</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/project-management/performance-management</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/project-management/ticketing-management</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/social-media</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/social-media/social-media-content-scheduling</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/social-media/social-media-content-integration</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/business</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/business/restaurant-business</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/business/merchandise-business</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-    <url>
-        <loc>https://alokaspace.com/data-analytics</loc>
-        <lastmod>2023-01-05</lastmod>
-        <priority>0.9</priority>
-    </url>    
-        <url>
-            <loc>https://alokaspace.com/data-analytics/social-media-engagement-analytics</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/data-analytics/data-scraping</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>    
-        <url>
-            <loc>https://alokaspace.com/data-analytics/web-analytics</loc>
-            <lastmod>2023-01-05</lastmod>
-            <priority>0.9</priority>
-        </url>
+<url>
+    <loc>https://alokaspace.com/human-resource</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/human-resource/freelance-management</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/human-resource/payroll-administration</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/accounting</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/accounting/invoice-generation</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/crm</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/crm/affiliate-marketing</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/crm/after-sales-activity</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/communication</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/communication/online-advertising</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/e-commerce</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/e-commerce/apparel-e-commerce</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/e-commerce/tech-e-commerce</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/e-commerce/merchandise-design</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/e-commerce/online-store</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/e-commerce/purchase-order</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/email-campaign</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/email-campaign/cold-marketing</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/email-campaign/in-bound-campaign</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/email-campaign/out-bound-campaign</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/administration</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/administration/finance</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/lead-generation</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/lead-generation/b2b-leads-generation</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/lead-generation/b2c-leads-generation</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/lead-generation/omnichannel-marketing</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/content-generation</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/content-generation/keyword-management</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/content-generation/digital-content-marketing</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/content-generation/copywriting</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/seo</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/seo/content-generation</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/project-management</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/project-management/performance-management</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/project-management/ticketing-management</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/social-media</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/social-media/social-media-content-scheduling</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/social-media/social-media-content-integration</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/business</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/business/restaurant-business</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/business/merchandise-business</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/data-analytics</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/data-analytics/social-media-engagement-analytics</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/data-analytics/data-scraping</loc>
+    <priority>0.9</priority>
+</url>    
+<url>
+    <loc>https://alokaspace.com/data-analytics/web-analytics</loc>
+    <priority>0.9</priority>
+</url>
 </urlset>

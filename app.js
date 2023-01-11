@@ -40,7 +40,7 @@ app.get('/logo', function (req, res) {
 
 app.get('/logo/campaign-:record_id', function (req, res) {
     axios.get(`https://n8n.nicholasbudiharsa.xyz/webhook/recently-funded-outreach-read?record_id=${req.params.record_id}`)
-    res.sendFile(__dirname + `/public/assets/img/logo.png`)
+    res.sendFile(__dirname + `/public/assets/img/banner.jpg`)
 });
 
 app.get('/:parent', function (req, res, next) {

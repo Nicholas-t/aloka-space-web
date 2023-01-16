@@ -1,0 +1,724 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personality Test</title>
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <!-- CUSTOM -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<!-- BODY -->
+
+<style>
+    * {
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+    }
+
+    .prompt {
+        display: block;
+        font-size: 20px;
+    }
+
+    p {
+        overflow-wrap: break-word;
+    }
+
+    .btn {
+        margin: 0 20px 0 20px;
+    }
+
+    .btn-strongly-agree {
+        color: #89d298;
+        font-weight: bold;
+    }
+
+    .btn-strongly-agree.active,
+    .btn-strongly-agree:active,
+    .btn-strongly-agree:focus,
+    .btn-strongly-agree:active:focus,
+    .btn-strongly-agree.active:focus,
+    .btn-strongly-agree:hover {
+        background-color: #89d298;
+    }
+
+    .btn-agree {
+        color: #89d298;
+    }
+
+    .btn-agree.active,
+    .btn-agree:active,
+    .btn-agree:focus,
+    .btn-agree:active:focus,
+    .btn-agree.active:focus,
+    .btn-agree:hover {
+        background-color: rgba(137, 210, 152, 0.5);
+    }
+
+    .btn-disagree {
+        color: #e28181;
+    }
+
+    .btn-disagree.active,
+    .btn-disagree:active,
+    .btn-disagree:focus,
+    .btn-disagree:active:focus,
+    .btn-disagree.active:focus,
+    .btn-disagree:hover {
+        background-color: rgba(226, 129, 129, 0.5);
+    }
+
+    .btn-strongly-disagree {
+        color: #e28181;
+        font-weight: bold;
+    }
+
+    .btn-strongly-disagree.active,
+    .btn-strongly-disagree:active,
+    .btn-strongly-disagree:focus,
+    .btn-strongly-disagree:active:focus,
+    .btn-strongly-disagree.active:focus,
+    .btn-strongly-disagree:hover {
+        background-color: #e28181;
+    }
+
+    .bottom {
+        margin-bottom: 100px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    /* RESULTS */
+    .results {
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+</style>
+
+<body>
+
+    <div class="container text-center">
+        <h1>MBTI Questionnaire (Pelindo test)</h1>
+        <p>At each number, choose one of the sentences A and B that you think is more suited to you.</p>
+    </div>
+    <div class="container text-center">
+        <ul id="quiz" class="list-group">
+
+        </ul>
+    </div>
+
+    <div class="container text-center hide results">
+        <img src="https://raw.githubusercontent.com/danubevictoria/quiz/master/images/results1.jpg"
+            class="results col-md-4 col-sm-4 col-xs-4">
+        <img src="https://raw.githubusercontent.com/danubevictoria/quiz/master/images/results2.jpg"
+            class="results col-md-4 col-sm-4 col-xs-4">
+        <img src="https://raw.githubusercontent.com/danubevictoria/quiz/master/images/results3.jpg"
+            class="results col-md-4 col-sm-4 col-xs-4">
+    </div>
+
+    <!-- <div class="container progress">
+		<div id="intro-bar" class="progress-bar" style="width: 15%" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+			15%
+		</div>
+		<div id="extro-bar" class="progress-bar bg-success" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+			30%
+		</div>
+	</div> -->
+
+    <div class="container text-center results hide">
+        <p id="results"></p>
+    </div>
+
+    <div class="container text-center bottom">
+        <button id="submit-btn" class="btn btn-primary btn-lg">Submit</button>
+
+        <button id="retake-btn" class="hide btn btn-primary btn-lg">Retake Quiz</button>
+    </div>
+    <!-- SCRIPTS -->
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- CUSTOM -->
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+<script>
+    var data = [
+        {
+            type: "EI",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I feel ....",
+            label_a: "A. comfortable when I have to meet and be with new people.",
+            label_b: "B. awkward in situations where I do not really know the people."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Inspirational ideas are more important than facts.",
+            label_b: "B. Facts are more important than inspirational ideas."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. I want to go home while at the party and usually quickly feel tired.",
+            label_b: "B. I remain at the party and when I get home I feel refreshed."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "In making decisions ....",
+            label_a: "A. I am more comfortable using the standards and rules of cause and effect.",
+            label_b: "B. I am more comfortable using feelings."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Spontaneous, flexible, unattached time.",
+            label_b: "B. Planned and have clear deadlines."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. SOP is helpful",
+            label_b: "B. SOPs are very boring"
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Find and develop ideas by talking about them.",
+            label_b: "B. Discover and develop ideas by contemplating."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Practical",
+            label_b: "B. Conceptual"
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Use experience as a guide",
+            label_b: "B. Using imagination as a guide"
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Excited by a touching explanation",
+            label_b: "B. Excited by a plausible explanation"
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Job-oriented and job description.",
+            label_b: "B. Human-oriented and relationships"
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. It takes a long time to adapt to the sudden things beyond the plan.",
+            label_b: "B. Sudden change does not matter."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "Eager to talk about the  ....",
+            label_a: "A. future and have ideas about the future.",
+            label_b: "B. problems faced today and practical steps to overcome them."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Prefer to think deeply before doing something.",
+            label_b: "B. Prefer to act quickly without too long thinking."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Standards and laws should be upheld above all (for showing honor and dignity).",
+            label_b: "B. Human feelings are more important than standards (which are inanimate)."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Demand fair and equal treatment for all.",
+            label_b: "B. Demand special treatment according to the characteristics of each person."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. See things as they are<br>-",
+            label_b: "B. Trying to see the 'intent behind the word or event' and <br>sometimes speculating about what is not implied."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Have many friends, friends and acquaintances.",
+            label_b: "B. Have some friends I really care about."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "Last minute sitations ....",
+            label_a: "A. creates excitement and generates potential ideas.",
+            label_b: "B. is very torturous, stressful and error."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "I am more impressed on ....",
+            label_a: "A. an imaginative person.",
+            label_b: "B. people who make sense."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Individual activity at home is a fun activity.",
+            label_b: "B. Activity alone at home is a boring activity."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Life should be arranged from the beginning.",
+            label_b: "B. Life should flow according to conditions."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I make decisions based on ....",
+            label_a: "A. logic and rules of the game.",
+            label_b: "B. the personal feelings and conditions of others."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. I often miss the news about what happened to my colleagues.",
+            label_b: "B. I always update about what happened to my colleagues."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Practical and realistic.",
+            label_b: "B. Inspirational and imaginative."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Respect for one's nature and behavior.",
+            label_b: "B. Appreciate a person for his skills and knowledge."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "Rules, schedules and targets ....",
+            label_a: "A. are very binding and burdensome.",
+            label_b: "B. will be helpful and clarify actions."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Closed and detached.",
+            label_b: "B. Expressive and sociable."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "For me, it is more important to  ....",
+            label_a: "A. keep the situation in harmony.",
+            label_b: "B. achieve goals."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Allowing others to act freely as long as the goal is achieved.",
+            label_b: "B. Organize others in order to achieve goals."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Prefer to wait to be greeted by others.",
+            label_b: "B. Likes to start a conversation, including with strangers."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. More interested in discussing what is actual.",
+            label_b: "B. More interested in discussing possibilities."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "Act according to ....",
+            label_a: "A. the situation and conditions that occurred at that time.",
+            label_b: "B. what has been planned."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Prefer to use skills that have been mastered.",
+            label_b: "B. Feeling challenged to try new skills."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: " Draw conclusions ....",
+            label_a: "A. with long and caution.",
+            label_b: "B. quickly according to instinct."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. I think involving the feeling is unprofessional.",
+            label_b: "B. In my opinion, firmly on the rules and work is cold."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Do not hesitate to say what it is and point out the faults of others.",
+            label_b: "B. Don’t like to convey the faults of others because they think it can disrupt relationships."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Sometimes it is difficult to focus on what is happening right <br>now because it has a lot of thoughts and ideas on the head.",
+            label_b: "B. Have the ability to observe well, able to pay attention to the <br>environment and remember details."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. Focus on the planned targets and ignore the <br>things that just came up later.",
+            label_b: "B. Pay attention to the things that are just <br>emerging and ready to adjust and change the target."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Feel comfortable when the situation remains open to other choices.",
+            label_b: "B. Feel calm when everything is decided."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. I love attending reunions.",
+            label_b: "B. I attended a reunion whose people I know well."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I think a good writer is ....",
+            label_a: "A. able to write in plain and straightforward language.",
+            label_b: "B. one who is able to express many things using analogies."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I am more impressed with the ability to  ....",
+            label_a: "A. hold principles.",
+            label_b: "B. understand feelings."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I tend to choose something ....",
+            label_a: "A. with consideration.",
+            label_b: "B. impulsively or spontaneously."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "I am more intrigued by ....",
+            label_a: "A. harmonious human relationships.",
+            label_b: "B. consistency in thinking."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. In assessing people's behavior, regulatory<br> and legal factors I consider more than conditions.",
+            label_b: "B. In assessing the behavior of people, the condition <br>factor I consider more than the rules and laws."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "I like to explain something ....",
+            label_a: "A. via email or text.",
+            label_b: "B. through direct conversation."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. I became more energized by the presence of many people.",
+            label_b: "B. I feel more comfortable being in a place that is not too many people."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. I trust my intuition more.",
+            label_b: "B. I trust my experience more."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I am more often seen as a ....",
+            label_a: "A. coolheaded person.",
+            label_b: "B. kind person."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I feel that I have the ability to ....",
+            label_a: "A. organize and manage things methodologically.",
+            label_b: "B. adapt well."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            label_a: "A. I prefer to make sure things go according to plan.",
+            label_b: "B. I prefer to let things happen as they are."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "I am more interested in aspects of  ....",
+            label_a: "A. production and distribution.",
+            label_b: "B. design and research."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "In performing daily tasks I prefer to ....",
+            label_a: "A. do it in a familiar way.",
+            label_b: "B. use my own way."
+        },
+        {
+            type: "TF",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. I think 'no merciful' is worse than 'unfair'.",
+            label_b: "B. I think 'unfair' is worse than 'no mercy'."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "A",
+            choice_of_second_type: "B",
+            intro: "When I want to ask or explain something, ....",
+            label_a: "A. I prefer to do it right away.",
+            label_b: "B. I prefer to think ahead of time what I will say before calling."
+        },
+        {
+            type: "SN",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. Talks about details are boring.",
+            label_b: "B. I'm interested in talking about details."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. I prefer spontaneous activity.",
+            label_b: "B. I prefer the planned activities."
+        },
+        {
+            type: "EI",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            label_a: "A. With strangers, I feel that I don’t have to talk and have little speech.",
+            label_b: "B. I find it easy to talk to strangers."
+        },
+        {
+            type: "JP",
+            choice_of_first_type: "B",
+            choice_of_second_type: "A",
+            intro: "I am more eager to do  ....",
+            label_a: "A. open work and let it flow.",
+            label_b: "B. a job that has clear rules and work schedule."
+        }]
+
+    // For each prompt, create a list item to be inserted in the list group
+    function createPromptItems() {
+        for (var i = 0; i < data.length; i++) {
+            document.getElementById('quiz').innerHTML += `
+            <li class="list-group-item prompt">
+                <p>Question ${i + 1}. ${data[i].intro ? data[i].intro : ""}</p>
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button personality-type="${data[i].choice_of_first_type == "A" ? data[i].type[0] : data[i].type[1]}" class="group${i} value-btn btn btn-default">
+                                ${data[i].label_a}
+                        </button></div>
+                    <div class="btn-group">
+                        <button personality-type="${data[i].choice_of_first_type == "B" ? data[i].type[0] : data[i].type[1]}" class="group${i} value-btn btn btn-default">
+                                ${data[i].label_b}
+                        </button></div>
+                </div>
+            </li>`
+        }
+    }
+
+    createPromptItems();
+
+    // Keep a running total of the values they have selected. If the total is negative, the user is introverted. If positive, user is extroverted.
+    // Calculation will sum all of the answers to the prompts using weight of the value * the weight of the prompt.
+    var total = 0;
+
+    // Get the weight associated to group number
+    function findPromptWeight(prompts, group) {
+        var weight = 0;
+
+        for (var i = 0; i < prompts.length; i++) {
+            if (prompts[i].class === group) {
+                weight = prompts[i].weight;
+            }
+        }
+
+        return weight;
+    }
+
+    // Get the weight associated to the value
+    function findValueWeight(values, value) {
+        var weight = 0;
+
+        for (var i = 0; i < values.length; i++) {
+            if (values[i].value === value) {
+                weight = values[i].weight;
+            }
+        }
+        return weight;
+    }
+
+
+    $('.value-btn').mousedown(function () {
+        var classList = $(this).attr('class');
+        // console.log(classList);
+        var classArr = classList.split(" ");
+        // console.log(classArr);
+        var this_group = classArr[0];
+        // console.log(this_group);
+
+        // If button is already selected, de-select it when clicked and subtract any previously added values to the total
+        // Otherwise, de-select any selected buttons in group and select the one just clicked
+        // And subtract deselected weighted value and add the newly selected weighted value to the total
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        } else {
+            $('.' + this_group).removeClass('active');
+            $(this).addClass('active');
+        }
+    })
+
+
+
+    $('#submit-btn').click(function () {
+        // After clicking submit, add up the totals from answers
+        // For each group, find the value that is active
+        $('.results').removeClass('hide');
+        $('.results').addClass('show');
+        const typeCorpus = [
+            "EI",
+            "SN",
+            "TF",
+            "JP"
+        ]
+        let finalResult = ""
+        for (let i = 0; i < typeCorpus.length; i++) {
+            let score1 = document.querySelectorAll(`[personality-type='${typeCorpus[i][0]}']`).length
+            let score2 = document.querySelectorAll(`[personality-type='${typeCorpus[i][1]}']`).length
+            if (score1 < score2) {
+                finalResult += typeCorpus[i][0]
+            } else {
+                finalResult += typeCorpus[i][1]
+            }
+        }
+        document.getElementById('results').innerHTML = `<b>${finalResult}</b><br><br>Please enter this to the form`
+
+        // Hide the quiz after they submit their results
+        $('#quiz').addClass('hide');
+        $('#submit-btn').addClass('hide');
+        $('#retake-btn').removeClass('hide');
+    })
+
+    // Refresh the screen to show a new quiz if they click the retake quiz button
+    $('#retake-btn').click(function () {
+        $('#quiz').removeClass('hide');
+        $('#submit-btn').removeClass('hide');
+        $('#retake-btn').addClass('hide');
+
+        $('.results').addClass('hide');
+        $('.results').removeClass('show');
+    })
+</script>
+
+</html>

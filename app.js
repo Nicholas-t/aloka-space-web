@@ -14,16 +14,26 @@ app.engine('html', require('ejs').renderFile);
 app.use('/static', express.static(__dirname + '/public'));
 
 app.use('/', function (req, res, next) {
-    if (req.query.campaign_rec_id) {
-        axios.get(`https://n8n.nicholasbudiharsa.xyz/webhook/recently-funded-outreach-visited?record_id=${req.query.campaign_rec_id}`)
-        res.redirect(req.path)
+    if ([
+        '127.0.0.1:5000',
+        'alokaspace.com'
+    ].includes(req.get('host'))) {
+        if (req.query.campaign_rec_id) {
+            axios.get(`https://n8n.nicholasbudiharsa.xyz/webhook/recently-funded-outreach-visited?record_id=${req.query.campaign_rec_id}`)
+            res.redirect(req.path)
+        } else {
+            next()
+        }
     } else {
-        next()
+        res.redirect('https://alokaspace.com')
     }
 })
 
 app.get('/', function (req, res) {
     res.render(__dirname + `/public/pages/index.html`, { ...template })
+});
+app.get('/mbti', function (req, res) {
+    res.render(__dirname + `/public/pages/talenta-nusantara/mbti.html`)
 });
 
 app.get('/contact', function (req, res) {

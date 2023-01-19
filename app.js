@@ -112,6 +112,16 @@ app.get('/sitemap.xml', function (req, res) {
     res.sendFile(__dirname + '/public/sitemap.xml');
 });
 
+
+app.post('/contact', function (req, res) {
+    axios({
+        method: "post",
+        url: "https://n8n.nicholasbudiharsa.xyz/webhook/contact-aloka-form",
+        data: req.body
+    })
+    res.redirect("/")
+});
+
 app.get('*', function (req, res) {
     res.redirect('/error')
 });

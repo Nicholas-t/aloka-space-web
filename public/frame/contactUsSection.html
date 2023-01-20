@@ -60,6 +60,16 @@
                         <textarea name="tool" rows="2" class="form-control"
                             placeholder="Tools you are currently using (comma separated) e.g. Integromat, Airtable, Lemlist"></textarea>
                     </div>
+                    <div class="py-2">
+                        <input required name="captcha" type="number" class="form-control" id="captcha">
+                        <input required name="correct_captcha" type="hidden" class="form-control" id="correct_captcha">
+                    </div>
+                    <script>
+                        let a = Math.floor(Math.random() * 10)
+                        let b = Math.floor(Math.random() * 10)
+                        document.getElementById("captcha").setAttribute("placeholder", `What is ${a} + ${b} ? (This is to defeat the bots)`)
+                        document.getElementById("correct_captcha").value = a + b
+                    </script>
                     <button type="submit" class="btn btn-primary rounded-pill mt-4">Send Message</button>
                     <a target="__blank" href="https://tidycal.com/3qgv0l1/30-minute-consultation-with-aloka-space"
                         class="btn btn-outline rounded-pill mt-4">or book a call directly with us</a>

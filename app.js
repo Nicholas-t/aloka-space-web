@@ -114,12 +114,16 @@ app.get('/sitemap.xml', function (req, res) {
 
 
 app.post('/contact', function (req, res) {
-    axios({
-        method: "post",
-        url: "https://n8n.nicholasbudiharsa.xyz/webhook/contact-aloka-form",
-        data: req.body
-    })
-    res.redirect("/")
+    if (req.body.captcha == req.body.correct_captcha) {
+        axios({
+            method: "post",
+            url: "https://n8n.nicholasbudiharsa.xyz/webhook/contact-aloka-form",
+            data: req.body
+        })
+        res.redirect("/")
+    } else {
+        res.redirect("/error")
+    }
 });
 
 app.get('*', function (req, res) {

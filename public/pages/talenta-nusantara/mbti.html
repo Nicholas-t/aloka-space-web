@@ -694,8 +694,9 @@
         ]
         let finalResult = ""
         for (let i = 0; i < typeCorpus.length; i++) {
-            let score1 = document.querySelectorAll(`[personality-type='${typeCorpus[i][0]}']`).length
-            let score2 = document.querySelectorAll(`[personality-type='${typeCorpus[i][1]}']`).length
+            let score1 = document.querySelectorAll(`.active[personality-type='${typeCorpus[i][0]}']`).length
+            let score2 = document.querySelectorAll(`.active[personality-type='${typeCorpus[i][1]}']`).length
+            console.log(score1, score2)
             if (score1 < score2) {
                 finalResult += typeCorpus[i][0]
             } else {

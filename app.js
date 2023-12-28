@@ -36,6 +36,10 @@ app.get('/mbti', function (req, res) {
     res.render(__dirname + `/public/pages/talenta-nusantara/mbti.html`)
 });
 
+app.get('/test/kognisi-chat', function (req, res) {
+    res.render(__dirname + `/public/pages/kognisi/chat.html`, { ...template })
+});
+
 app.get('/contact', function (req, res) {
     let message = ""
     if (req.query.inquire) {
